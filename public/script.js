@@ -1,12 +1,18 @@
 var socket = io();
 
 let btn = document.getElementById("btn");
+let inputMsg = document.getElementById("newmsg");
+let msgList = document.getElementById("msglist");
+
 btn.onclick = function exec() {
-  socket.emit("From_Client");
+  socket.emit("msg_send", {
+    msg: inputMsg.value,
+  });
 };
 
-socket.on("From_Server", () => {
-  const div = document.createElement("div");
-  div.innerHTML = "New event from the server";
-  document.body.appendChild(div);
+socket.on("msg_rcvd", (data) => {
+  let limsg = document.createElement("li");
+  limsg.innerHTML = data.msg;
+  msgList.appendChild(limsg);
 });
+zczx
