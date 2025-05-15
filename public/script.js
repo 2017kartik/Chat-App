@@ -15,4 +15,3 @@ socket.on("msg_rcvd", (data) => {
   limsg.innerHTML = data.msg;
   msgList.appendChild(limsg);
 });
-zczx
